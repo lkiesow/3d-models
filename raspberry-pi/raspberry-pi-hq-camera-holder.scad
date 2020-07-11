@@ -24,8 +24,16 @@ module rpi_base() {
 
 module camera_holes(x, y) {
     dist = 38 - (2 * 3.8);
-    translate([x,y,0])
+    translate([x,y,-1])
     union() {
+        difference() {
+            translate([-2,-2,0])
+            cube([dist+4,dist+4,5]);
+            standoff(0,0);
+            standoff(0,dist);
+            standoff(dist,0);
+            standoff(dist,dist);
+        }
         hole(0,0);
         hole(0, dist);
         hole(dist, 0);
