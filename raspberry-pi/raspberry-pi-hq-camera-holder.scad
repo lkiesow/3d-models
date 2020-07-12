@@ -6,14 +6,14 @@ module hole(x, y) {
 
 module standoff(x, y) {
     translate([x,y,0])
-    cylinder(6, d=6.2, $fn=30);
+    cylinder(8, d=6.2, $fn=30);
 }
 
 module rpi_base() {
     translate([1,1,1])
     minkowski(){
         sphere(d=2, $fn=25);
-        cube([85-2, 56-2, 3-2]);
+        cube([85-2, 56-2, 4-2]);
     }
 }
 
@@ -27,8 +27,20 @@ module camera_holes(x, y) {
     translate([x,y,-1])
     union() {
         difference() {
-            translate([-2,-2,0])
-            cube([dist+4,dist+4,5]);
+            union() {
+                translate([-3.8,3.1,0])
+                cube([38,dist-(2*3.1),5]);
+                translate([3.1,-3.8,0])
+                cube([dist-(2*3.1),38,5]);
+                // round screwhole edges
+                translate([dist/2,dist/2,0])
+                rotate([0,0,45])
+                cube([42,5,25], center=true);
+                translate([dist/2,dist/2,0])
+                rotate([0,0,-45])
+                cube([42,5,25], center=true);
+            }
+
             standoff(0,0);
             standoff(0,dist);
             standoff(dist,0);
@@ -38,16 +50,24 @@ module camera_holes(x, y) {
         hole(0, dist);
         hole(dist, 0);
         hole(dist, dist);
+
+        // ribbon cable
+        cable_w = dist-(2*3.1);
+        translate([-12,(dist+4-cable_w)/2-2,-1])
+        cube([28,cable_w,8]);
     }
 }
 
 difference() {
     union() {
         rpi_base();
-        standoff(3.5, 3.5);
-        standoff(3.5, 52.5);
-        standoff(61.5, 3.5);
-        standoff(61.5, 52.5);
+        translate([0,0,1])
+        union() {
+            standoff(3.5, 3.5);
+            standoff(3.5, 52.5);
+            standoff(61.5, 3.5);
+            standoff(61.5, 52.5);
+        }
     }
     hole(3.5, 3.5);
     hole(3.5, 52.5);
