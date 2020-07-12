@@ -1,7 +1,7 @@
 
 module hole(x, y) {
     translate([x,y,-2])
-    cylinder(10, d=2.5, $fn=20);
+    cylinder(16, d=2.5, $fn=20);
 }
 
 module standoff(x, y) {
