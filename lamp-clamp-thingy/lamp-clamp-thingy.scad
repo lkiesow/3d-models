@@ -1,5 +1,5 @@
 outer_x = 30;
-outer_y = 8;
+outer_y = 9;
 outer_z = 50;
 
 inner_x = 15.3;
