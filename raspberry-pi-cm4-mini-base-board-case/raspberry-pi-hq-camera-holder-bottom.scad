@@ -28,8 +28,13 @@ module rpi_base() {
     translate([1,1-8,1])
     minkowski(){
         sphere(d=2, $fn=25);
-        cube([85-2, 62.4-2+16, 3-2]);
+        difference() {
+          cube([85-2, 62.4-2+16, 3-2]);
+          translate([(30-2)/2,(40-2)/2,-1])
+            cube([62.4+16-40, 62.4+16-40, 5]);
+        }
     }
+
 }
 
 module vesa_mount() {
