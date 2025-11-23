@@ -11,16 +11,17 @@ module pin(x, y) {
 
 module standoff(x, y) {
     translate([x,y,0])
-    cylinder(8, d=6.2, $fn=30);
+    cylinder(7, d=6.2, $fn=30);
 }
 
 module top_mount(x, y) {
+  // board height is < 23 mm
   difference() {
     translate([x,y,0])
-    cylinder(25, d=6.2, $fn=30);
+    cylinder(30, d=6.2, $fn=30);
     color("red")
     translate([x,y,6])
-    cylinder(25, d=3, $fn=30);
+    cylinder(30, d=3.2, $fn=30);
   }
 }
 
