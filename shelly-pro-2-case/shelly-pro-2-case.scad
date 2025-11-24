@@ -2,7 +2,7 @@ w1 = 45;
 w2 = 76;
 w3 = 91;
 
-h1 = 24.5;
+h1 = 20.5;
 h2 = 49.5;
 h3 = 69;
 
@@ -45,17 +45,17 @@ module case() {
 module lan_port() {
   translate([w2 + 30, h1 + 2, 0])
   difference() {
-    cube([45, 18, 13.5 + 3.001]);
+    cube([45, 21, 13.5 + 3.001]);
     color("green")
     translate([0, 2, -0.001])
-    cube([50, 14, 20]);
+    cube([50, 17, 20]);
   }
 }
 
 module lan_cutout() {
   translate([w2 + (w3-w2)/2 + 30, h1 + 2, 0])
     translate([0, 2, -0.001])
-      cube([50, 14, 30]);
+      cube([50, 17, 30]);
 }
 
 module power_cord_hole(x, y) {
@@ -74,12 +74,13 @@ difference() {
     lan_port();
 
     // left stopper top
-    translate([30 + (w3-w1)/2 - 4, h3 - 16 + 3, 0])
-    cube([6, 16, 12]);
+    translate([30 + (w3-w1)/2 - 4, h3 - 19 + 3, 0])
+    cube([6, 19, 12]);
 
     // left stopper bottom
-    translate([30 - 4, 0, 0])
-    cube([6, 6, 12]);
+    // TODO: Needs to be shifted left if we need this
+    //translate([30 - 4, 0, 0])
+    //cube([6, 6, 12]);
   }
   lan_cutout();
 
