@@ -9,8 +9,8 @@ h3 = 69;
 d = 19;
 
 module shelly() {
-  translate([(w3-w1)/2, 0, 0])
-    cube([w1, h3, d]);
+  translate([(w3-w1)/2-0.5, 0, 0])
+    cube([w1+0.5, h3, d]);
   translate([(w3-w2)/2, 0, 0])
     cube([w2, h2, d]);
   cube([w3, h1, d]);
@@ -32,8 +32,8 @@ module case() {
     translate([3, 3, 2])
     cube([w3+54, h3-3, d+2*2 + 4]);
 
-    translate([(w3-w1)/2+30, 3.1, 2])
-      cube([w1, h3, d+10]);
+    translate([(w3-w1)/2+30-0.5, 3.1, 2])
+      cube([w1+0.5, h3, d+10]);
   }
 
   screw_hole(0, 0);
@@ -89,7 +89,7 @@ difference() {
   power_cord_hole(0, 40);
 
   // input
-  power_cord_hole(w3 + 60, 18);
+  power_cord_hole(w3 + 60, 14);
 
   color("red")
   translate([30, 3.001, 2])
