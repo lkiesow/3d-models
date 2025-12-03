@@ -35,6 +35,7 @@ difference() {
         polygon( points);
     }
     // first and third row of holes
+    /*
     for (b = [4.5:10:14.5]) {
         for (a = [0,7,14,42,49,56]) {
             translate([6 + a, b, -30])
@@ -45,6 +46,7 @@ difference() {
         translate([9.5 + a,9.5,-30])
         cylinder(60, d=5, $fn=6);
     }
+    */
 
   // RJ45 cutout
   translate([A+10.5+6.1/2, 2.8, -4])
