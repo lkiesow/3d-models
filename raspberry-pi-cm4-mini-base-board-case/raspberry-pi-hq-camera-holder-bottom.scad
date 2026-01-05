@@ -1,27 +1,24 @@
 
+screw_diameter=3;
+
 module hole(x, y) {
     translate([x,y,-2])
     cylinder(16, d=2.5, $fn=20);
 }
 
-module pin(x, y) {
-    translate([x,y,0])
-    cylinder(14, d=2.5, $fn=30);
-}
-
 module standoff(x, y) {
     translate([x,y,0])
-    cylinder(7, d=6.2, $fn=30);
+    cylinder(9, d=6.2, $fn=30);
 }
 
 module top_mount(x, y) {
   // board height is < 23 mm
   difference() {
     translate([x,y,0])
-    cylinder(30, d=6.2, $fn=30);
+    cylinder(30, d=screw_diameter+3, $fn=30);
     color("red")
     translate([x,y,6])
-    cylinder(30, d=3.2, $fn=30);
+    cylinder(30, d=screw_diameter, $fn=30);
   }
 }
 
