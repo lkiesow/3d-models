@@ -1,3 +1,8 @@
+// Compute Module 4 POE Board
+//
+// Docsumentation
+// https://www.waveshare.com/wiki/Compute_Module_4_POE_Board
+
 width = 160 + .4; // added .4 for easier fit
 depth = 89.8;
 
