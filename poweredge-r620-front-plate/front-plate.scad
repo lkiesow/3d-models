@@ -16,9 +16,11 @@ module plate() {
     hole_d = 13;
     color("red")
     for (i = [24:hole_d+2:plate_width-20]) {
-      translate([i, 9, -2])
-        rotate([0, 0, i])
-        cylinder(20, d=hole_d, $fn=8);
+      if (i > 60) {
+        translate([i, 9, -2])
+          rotate([0, 0, i])
+          cylinder(20, d=hole_d, $fn=8);
+      }
       translate([i - (hole_d / 2), 21, -2])
         rotate([0, 0, i+(hole_d+2)/3])
         cylinder(20, d=hole_d, $fn=8);
@@ -40,14 +42,25 @@ plate();
 
 // left locking mechanism
 // IMPORTANT: Remember that the front plate sits at z=-1
-translate([-1, 12, 0])
-  cube([6, 22, 7]);
-translate([-1, 8, 4])
-  cube([6, 22, 3]);
+color("black")
+translate([0, 11, 0])
+  cube([6, 14, 9]);
+color("red")
+translate([-1, 11, 7])
+  cube([6, 20, 3]);
 color("blue")
-translate([-3, 32, 5])
+translate([-3, 14, 5.5])
   rotate([0, 90, 0])
-  cylinder(4, d=3, $fn=16);
+  cylinder(4, d=2.5, $fn=16);
+// left edge
+translate([0, -1, 0])
+  cube([6, 7.5, 15]);
+// right edge
+translate([0, plate_height-1-7.5, 0])
+  cube([6, 7.5, 15]);
+// bottom
+translate([0, 0, -1])
+  cube([6, plate_height-2, 3.6]);
 
 // right locking mechanism
 // IMPORTANT: Remember that the front plate sits at z=-1
@@ -64,5 +77,5 @@ translate([plate_width-6-2, -1, 0])
 translate([plate_width-6-2, plate_height-1-7.5, 0])
   cube([6, 7.5, 15]);
 // bottom
-translate([plate_width-6-2, -1, -1])
-  cube([6, plate_height, 3.6]);
+translate([plate_width-6-2, 0, -1])
+  cube([6, plate_height-2, 3.6]);
