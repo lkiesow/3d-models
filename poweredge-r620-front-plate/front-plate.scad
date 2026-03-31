@@ -1,6 +1,7 @@
 
-plate_height = 44.45; // 1 rack unit
-plate_width = 18 * 25.4; // 18 inches
+plate_height = 44.45 - 0.79; // 1 rack unit - 0.79mm
+plate_width = 18 * 25.4 - 14.7; // 18 inches - 14.7mm
+// plate_width = 6 * 25.4; // 6 inches <- tiny for prototype
 plate_depth = 16;
 
 module plate() {
@@ -56,20 +57,20 @@ translate([-3, 14, 5.5])
 translate([0, -1, 0])
   cube([6, 7.5, 15]);
 // right edge
-translate([0, plate_height-1-7.5, 0])
-  cube([6, 7.5, 15]);
+//translate([0, plate_height-1-7.5, 0])
+//  cube([6, 7.5, 15]);
 // bottom
 translate([0, 0, -1])
   cube([6, plate_height-2, 3.6]);
 
 // right locking mechanism
 // IMPORTANT: Remember that the front plate sits at z=-1
-color("orange")
-translate([plate_width-12, 11, -1+3.6+4])
-  cube([11, 14, 3]);
+color("black")
+translate([plate_width-16, 19, -1+3.6+4])
+  cube([15, 12, 3]);
 color("red")
-translate([plate_width-12, 11, 0]) // 5mm zurück
-  cube([6, 14, 7]);
+translate([plate_width-16, 19, 0]) // 5mm zurück
+  cube([10, 12, 7]);
 // left edge
 translate([plate_width-6-2, -1, 0])
   cube([6, 7.5, 15]);
