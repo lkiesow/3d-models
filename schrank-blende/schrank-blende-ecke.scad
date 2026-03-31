@@ -1,3 +1,4 @@
+//intersection() {
 difference() {
     minkowski() {
         difference() {
@@ -36,3 +37,7 @@ difference() {
     translate([60, 7, -20])
     cylinder(40, d=d);
 }
+
+//translate([-10, -10, 0])
+//cube([90, 90, 20]);
+//}
